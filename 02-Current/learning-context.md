@@ -13,14 +13,15 @@ updated: 2026-08-08
 
 ## 当前能力画像
 
-学习者不是从零开始写代码，但计算机基础存在“项目做过很多、底层概念不够系统”的特点。AI 辅助开发与项目实践能力明显强于传统基础知识的口头解释与算法能力。
+学习者不是从零开始写代码，有一定 C++ 语言基础，因此变量、函数、成员访问、控制流等概念可用 C++ 做直觉类比；但 JavaScript、DOM / Web API 尚未系统学习。项目实践与 AI 辅助开发经验明显强于传统基础知识的系统化口头解释与算法能力。
 
 目前最有效的教学目标不是快速堆知识点，而是把已经见过、用过的概念形成稳定模型，让学习者能：
 
 - 用自己的话解释；
 - 被追问时继续往下推；
 - 发现自己措辞里的技术错误；
-- 判断 AI 给出的方案是否合理。
+- 判断 AI 给出的方案是否合理；
+- 把“理解现象”逐渐升级成“记得准确术语并能面试表达”。
 
 ## 已确认的学习方式
 
@@ -44,6 +45,16 @@ updated: 2026-08-08
 
 不要一次性灌大量教材内容。优先“小块推进 + 高频回忆”。
 
+对于 JavaScript / DOM API 与浏览器性能术语，当前采用三层记忆策略：
+
+```text
+第一层：先理解现象 / 代码意图
+第二层：知道准确术语是什么
+第三层：经过间隔复习后，能脱离提示主动说出术语
+```
+
+例如 `offsetWidth`、`querySelector` 第一次出现只要求知道用途；Layout Thrashing、Forced Synchronous Layout 先理解现象，再逐渐记住名称，不因为暂时叫不出术语就判定“不理解”。
+
 ## 已确认能解释的内容
 
 ### Web / Network
@@ -57,6 +68,34 @@ updated: 2026-08-08
 ### Cache / CDN / HTTP Versions
 
 理解强缓存与协商缓存、ETag / 304、Content Hash；理解 CDN 边缘缓存、Hit / Miss / 回源 / TTL；能够说明 HTTP/2 多路复用与 TCP 队头阻塞，以及 HTTP/3 → QUIC → UDP 的基本关系。
+
+### Browser Rendering 第一轮
+
+已经完成第一轮 Browser Rendering 主干学习并能通过口头推理回答主要问题：
+
+```text
+HTML → DOM
+CSS → CSSOM
+→ Layout
+→ Paint
+→ Composite
+```
+
+已理解：
+
+- HTML 与 DOM 的区别；
+- `display:none` / `visibility:hidden` / `opacity:0`；
+- `transform` / `opacity` 与动画性能；
+- `transition` 的连续过渡直觉；
+- 普通 `<script>` 为什么阻塞 HTML Parser；
+- `async` / `defer` 的下载与执行顺序；
+- `DOMContentLoaded` / `load`；
+- CSS 通常不直接阻塞 DOM 构建，但会影响关键渲染，并可能通过普通 JS 形成间接等待；
+- Reflow / Repaint；
+- 修改布局后立即读取尺寸为什么可能产生 Forced Synchronous Layout；
+- 频繁读写布局为什么可能形成 Layout Thrashing。
+
+注意：最后几个专有术语和具体 DOM API 名称仍不稳定，需要后续间隔复习。
 
 ## 最近纠正过的错误
 
@@ -83,17 +122,51 @@ updated: 2026-08-08
 
 错误：HTTP/2 有 Multiplexing 就彻底没有队头阻塞。
 纠正：仍存在 TCP 连接级 Head-of-Line Blocking。
+
+错误：display:none = 元素不占内存 / DOM 中不存在。
+纠正：DOM 节点仍可存在；它是不参与正常 Layout、不占页面布局空间。
+
+错误：普通 script 阻塞 HTML Parsing 是因为 JS 会“重新绘制页面”。
+纠正：更核心的原因是 JS 可以修改 DOM / 文档解析结果，因此 Parser 不能无条件越过脚本继续。
+
+易混：document 是 HTML 中某一个 DOM 元素。
+纠正：`document` 是浏览器提供的 `Document` 对象，代表当前整个文档，是访问 DOM 树的重要入口。
+
+易混：`.title` 字符串本身是 CSS 解析器。
+纠正：`.title` 只是 JavaScript 字符串；是 `querySelector()` 按 CSS Selector 语法解释这个字符串。
 ```
 
 ## 当前明显薄弱项
 
-- Browser Rendering 还没有完成系统学习；
+- JavaScript 语言基础尚未系统补齐，目前从 `const title = document.querySelector(".title")` 开始补变量、值、对象、函数、DOM / Web API；
+- Browser Rendering 主干已完成第一轮，但 Reflow / Repaint、Forced Synchronous Layout、Layout Thrashing 等术语仍需间隔复习；
 - JavaScript 执行模型、Event Loop、闭包、原型链等尚未系统补齐；
 - Vue / React 等框架原理基础薄弱；
 - 后端 / 数据库 / 全栈体系需要系统建立；
 - 算法现场实现较弱，尤其是 Diff / LCS / 动态规划；
 - 工程化、安全、性能有项目经验，但需要从经验提升到可解释的理论框架；
 - 面试时容易使用“可能、就是、相应的”等模糊表达，需要训练技术表述的结构化与精确性。
+
+## 总体学习路线
+
+不是“完整学完前端以后才进入后端”，而是沿完整 Web 请求链路螺旋推进：
+
+```text
+Web / Network 基础
+→ Browser Rendering
+→ JavaScript 最低必要基础
+→ DOM / Event
+→ Promise / async-await / Event Loop
+→ fetch / JSON / API
+→ Backend：Server / Port / Route / Request / Response
+→ Database / SQL
+→ 完整前后端交互：登录 / Cookie / Session / JWT / CORS / 权限
+→ Frontend Framework：Vue / React 核心概念
+→ Backend Engineering
+→ Algorithm / Engineering / Security / Performance 持续穿插
+```
+
+后端的第一次正式切入点是 `fetch()`：浏览器发出 `/api/...` 请求后，自然追问谁监听端口、Route 如何匹配、后端如何返回 JSON、数据库何时参与、404 / 500 在哪里产生。
 
 ## 教学规则
 
@@ -104,6 +177,40 @@ updated: 2026-08-08
 5. 新知识尽量挂接到真实项目、浏览器请求链路或真实面试问题。
 6. 每完成一个明显主题，更新本仓库状态，而不是把进度只留在聊天记录里。
 7. `interview-ready` 的标准：隔一段时间仍能脱离提示完整解释，并能接至少两层追问。
+8. JavaScript / DOM 学习可利用 C++ 做类比，但必须明确 JavaScript 的动态类型、对象模型、引用 / 绑定语义与 C++ 并不等同。
+
+## 窗口切换自动同步规则
+
+这是固定流程，不需要学习者每次额外提醒。
+
+**只要学习者明确表示“要换新窗口 / 开新窗口 / 这个窗口太卡了准备切窗口”等意思，在给出交接词之前，AI 必须先自动把本窗口自上次同步以来的学习增量写入 `Tyr1onX/Learning`。**
+
+不能只记录“当前断点”，至少检查并按实际需要更新：
+
+```text
+1. 02-Current/current-focus.md
+   → 当前精确断点、下一步、尚未解决的问题
+
+2. 对应的 03-Knowledge/... 主题笔记
+   → 本窗口真正学过的新知识、例子、纠正过的误区
+
+3. 05-Progress/learning-status.md
+   → 各主题状态是否从 not-started / learning / understood 等发生变化
+
+4. 05-Progress/Sessions/... 会话记录
+   → 本次学习覆盖内容、关键回答、仍不稳定的术语、下一窗口入口
+
+5. 02-Current/learning-context.md（仅在学习策略 / 能力画像 / 固定规则变化时）
+   → 例如发现新的学习习惯、术语记忆问题、路线调整
+```
+
+同步原则：
+
+- 记录“学了什么”，不只记录“学到哪里”；
+- 记录用户已经能自己推理出的内容，也记录刚纠正的误区；
+- 不把只听过一次的概念直接升级为 `understood`；
+- 如果现象理解了但术语不稳定，要明确写成“现象理解 / 术语待复习”；
+- GitHub 同步完成后再给新窗口简短交接词。
 
 ## 新窗口推荐开场
 
@@ -114,6 +221,7 @@ AI 应先检查：
 02-Current/current-focus.md
 02-Current/learning-context.md
 05-Progress/learning-status.md
+最近一条 05-Progress/Sessions/... 会话记录
 ```
 
 然后从 `current-focus.md` 的“正在学习”继续，不要默认从第一章重讲。
