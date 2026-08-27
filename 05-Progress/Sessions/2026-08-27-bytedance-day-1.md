@@ -77,6 +77,28 @@ unordered_map<string, vector<string>> groups;
 
 学习者能够自行推出：每个长度为 `k` 的字符串排序为 `O(k log k)`，对 `n` 个字符串处理得到 `O(n * k log k)`。
 
+## 晚间复习结果
+
+2026-08-27 晚间进行了脱离笔记回忆，整体保留良好：
+
+- 能准确区分 `let` 与 `const` 的重新赋值规则；
+- 能解释 `const` 对象允许修改属性，但不能把变量重新赋给另一个对象；
+- 能区分 `undefined` 与 `null`；
+- 能说明 `===` 同时要求类型和值匹配，而 `==` 会发生隐式类型转换；
+- 能解释动态类型的核心，但口述时把 JavaScript 误说成 TypeScript，需要继续固定术语；
+- 能解释字母异位词排序后得到同一 key，并正确复述完整分组流程；
+- 能独立恢复时间复杂度 `O(n * k log k)` 与空间复杂度 `O(n * k)`；
+- `vector<vector<string>>` 已理解为“外层 vector 的元素类型是 `vector<string>`”；
+- `unordered_map<string, vector<string>>` 的两个模板参数仍需固定：第一个是 Key 类型 `string`，第二个是 Value 类型 `vector<string>`，不是“数据类型 + 管理方法”。
+
+### 晚间复习后重点
+
+下一次优先抽查：
+
+1. JavaScript ≠ TypeScript；当前学习的是 JavaScript 动态类型；
+2. `unordered_map<Key, Value>`：`string` 是 Key 类型，`vector<string>` 是 Value 类型；
+3. `vector<vector<string>>`：外层每个元素都是一个 `vector<string>`。
+
 ## 复习计划
 
 LeetCode 49 进入复习池：
