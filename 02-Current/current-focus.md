@@ -3,36 +3,33 @@ tags:
   - current
   - learning
 status: active
-updated: 2026-08-08
+updated: 2026-08-27
 ---
 
 # 当前学习焦点
 
-## 当前主线
+## 当前总目标
 
-正在沿着“Web 请求完整链路”补齐 Web / 浏览器 / 前端 / 后端基础。学习方式以理解现象为主，再补准确术语；不要把只见过一次的 API 名称当作已经掌握。
+面向下一次字节跳动日常实习 / 暑期实习，按“每天一个明确学习主题 + 一道 Hot 100 算法任务”的固定节奏推进全栈能力。当天任务完成后停止继续备战，避免无休止加量。
 
-### 已经连续学过
+## 已完成主干
 
-- URL 结构、域名、IP、端口；
-- DNS 递归解析、Root / TLD / Authoritative、TTL、A / AAAA / CNAME；
-- SNI 与 HTTP `Host` 的层次区别；
-- TCP 三次握手、序列号、ACK、重传、可靠有序字节流；
-- TLS 的保密性、完整性、身份认证、证书、CA、非对称 + 对称加密；
-- HTTP Methods、状态码、幂等；
+Web / Network / Browser 已完成一轮系统学习并经过无提示混合回忆，主干维持 `understood`：
+
+- URL、Domain、IP、Port；
+- DNS hierarchy / TTL / records；
+- TCP handshake 与可靠传输；
+- TLS / certificate / CA；
+- HTTP methods / status / idempotency；
 - Cookie / Session / JWT / Access Token / Refresh Token；
 - XSS / CSRF / SameSite / Same-Origin / CORS / Preflight；
-- HTTP 强缓存 / 协商缓存、ETag / 304、`no-cache` / `no-store`；
-- Content Hash、CDN、TTL、Cache Hit / Miss、回源、Purge / Invalidation；
-- HTTP/1.1 Keep-Alive、HTTP/2 Multiplexing、TCP Head-of-Line Blocking；
-- HTTP/3、QUIC over UDP、TLS 1.3、Connection ID / Connection Migration；
-- 浏览器渲染第一轮：HTML → DOM、CSS → CSSOM、Layout、Paint、Composite；
-- `display:none` / `visibility:hidden` / `opacity:0` 的区别；
-- `transform` / `opacity` 与动画性能的基本原因；
-- 普通 `script`、`async`、`defer`；
-- `DOMContentLoaded` 与 `load`；
-- CSS 通常不直接阻塞 HTML Parser，但会影响关键渲染，并可能通过脚本形成间接等待；
-- Reflow / Repaint、Forced Synchronous Layout、Layout Thrashing 的现象已经理解，但术语和具体 DOM API 仍不熟。
+- Strong / Conditional Cache、ETag、Content Hash、CDN；
+- HTTP/1.1 / 2 / 3、QUIC；
+- DOM / CSSOM / Layout / Paint / Composite；
+- script / async / defer；
+- DOMContentLoaded / load；
+- Reflow / Repaint；
+- Forced Synchronous Layout / Layout Thrashing 的现象已理解，术语仍需间隔复习。
 
 详见：
 
@@ -41,57 +38,100 @@ updated: 2026-08-08
 - [[03-Knowledge/Web/03-cache-cdn-http-versions]]
 - [[03-Knowledge/Web/04-browser-rendering]]
 
-## 正在学习
+## 当前全栈学习主线
 
-### JavaScript + DOM 最低必要基础
+### JavaScript 基础
 
-因为尚未系统学习 JavaScript，当前先暂停继续深入 `requestAnimationFrame` / Event Loop，补齐之后浏览器学习所需的语言与 DOM 基础。
+2026-08-27 已完成第一轮：
 
-当前精确断点：
+- `let` / `const`；
+- variable / binding / value；
+- `const` 与对象属性修改；
+- JavaScript 动态类型：值有类型，变量不被固定为某一种类型；
+- `number` / `string` / `boolean`；
+- `undefined` / `null`；
+- `typeof`；
+- `typeof null === "object"` 的历史兼容问题；
+- `==` 与 `===`，默认优先严格相等。
 
-```js
-const title = document.querySelector(".title");
-```
+当前这些内容刚完成第一轮，不提前标记为 `understood`；后续通过间隔回忆确认。
 
-已经能够大体解释：
+### 下一学习断点
 
-- `const`：声明一个不能被重新赋值 / 重新绑定的变量；对于对象，不能把变量重新指向另一个对象，但对象内部内容仍可能修改；
-- `title`：自己起的变量名，用来保存右侧表达式的结果；
-- `document`：浏览器提供的、代表当前文档的 DOM `Document` 对象，是 Web API，不是 JavaScript 语言关键字；
-- `querySelector(...)`：`document` 对象上的一个方法，用 CSS selector 查找匹配的 DOM 元素；
-- `".title"`：JavaScript 字符串，其内容会被 `querySelector` 按 CSS Selector 语法解释；这里 `.` 表示 class selector，即寻找 `class="title"` 的元素。
-
-下一窗口需要先纠正/巩固的两个点：
-
-1. `document` 不是“HTML 里某一个 DOM 元素”，而是代表整个当前文档的 `Document` 对象，是 DOM 树的重要入口。
-2. `".title"` 本身只是字符串；不是字符串自己成为“解析器”。是 `querySelector` 接收这个字符串，并按 CSS Selector 语法解析它。
-
-用户有 C++ 语言基础，可多用 C++ 的变量、成员访问、成员函数做类比，但要明确 JavaScript 的动态类型、对象模型和引用语义并不等同于 C++。
-
-## 接下来的路线
-
-总体不是“先学完整前端，再学后端”，而是沿一次完整 Web 请求螺旋推进：
+下一次从：
 
 ```text
-Web / Network 基础
-→ Browser Rendering
-→ JavaScript 最低必要基础
+对象 / 数组的基本模型
+→ 属性访问
+→ 对象与引用直觉
+→ 函数
+→ 作用域 / 闭包 / this / prototype
 → DOM / Event
 → Promise / async-await / Event Loop
 → fetch / JSON / API
-→ 后端第一次正式进入：Server / Port / Route / Request / Response
-→ 数据库与 SQL
-→ 完整前后端交互：登录 / Cookie / Session / JWT / CORS / 权限
-→ 前端框架核心概念（Vue / React）
-→ 后端工程化
-→ 算法 / 工程 / 安全 / 性能持续穿插
+→ TypeScript
+→ React
+→ Node.js Backend
+→ SQL / Database
+→ Auth / Full-stack interaction
+→ Linux / Docker / Deployment / CI
 ```
 
-后端的自然切入点是 `fetch()`：浏览器既然发出 `/api/...` 请求，就开始追问是谁监听端口、路由如何匹配、后端如何返回 JSON、数据库何时参与、404/500 在哪里产生。
+不重复从 Web / Network 开始，也不提前跳到 React。
 
-## 学习方式提醒
+## 算法主线
 
-- JavaScript / DOM API（如 `offsetWidth`、`querySelector`）第一次遇到只要求知道用途，不强求立即背名字；
-- 浏览器核心概念（Layout / Paint / Composite）要求真正理解；
-- 专有术语（Layout Thrashing、Forced Synchronous Layout）先理解现象，再贴术语标签；
-- 每个重要概念后继续做口头回忆题，把“能理解”逐渐升级为“能准确表达”。
+使用 LeetCode Hot 100 作为主要题池，由题型和当前能力安排顺序，不机械按网页顺序。
+
+### 已完成
+
+2026-08-27：LeetCode 49「字母异位词分组」第一轮完成。
+
+核心：
+
+```text
+每个字符串复制为 key
+→ 对 key 排序
+→ 排序结果作为 unordered_map 的键
+→ key 相同的原字符串进入同一 vector
+→ 收集所有 pair.second 形成最终答案
+```
+
+复杂度：
+
+- 时间：`O(n * k log k)`；
+- 空间：`O(n * k)`。
+
+本次暴露的实现点：
+
+- `std::sort` 原地排序，不返回排序结果；
+- `unordered_map<string, vector<string>>` 是中间分组结构，不能直接返回为 `vector<vector<string>>`；
+- 最终通过遍历哈希表收集 `pair.second`；
+- C++ 嵌套 `vector` 类型仍需通过实践继续稳定。
+
+### LeetCode 49 复习节点
+
+- D+1：2026-08-28，口述思路 / 数据结构 / 复杂度；
+- D+3：2026-08-30，不看答案恢复关键实现；
+- D+7：2026-09-03，重新独立完成或完整推导；
+- D+21：2026-09-17，随机抽查。
+
+## 每日执行规则
+
+详见：[[01-Roadmap/bytedance-fullstack-daily-plan]]。
+
+每天开始时固定给出：
+
+```text
+今日学习主题
+完成标准
+今日算法新题
+需要复习的旧题（如有）
+今日停止线
+```
+
+每天完成固定任务后立即结束字节准备，不追加第二个知识主题或第二道新算法题。
+
+## 最近一次会话
+
+[[05-Progress/Sessions/2026-08-27-bytedance-day-1]]
