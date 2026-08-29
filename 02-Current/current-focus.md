@@ -3,7 +3,7 @@ tags:
   - current
   - learning
 status: active
-updated: 2026-08-27
+updated: 2026-08-29
 ---
 
 # 当前学习焦点
@@ -42,30 +42,43 @@ Web / Network / Browser 已完成一轮系统学习并经过无提示混合回�
 
 ### JavaScript 基础
 
-2026-08-27 已完成第一轮：
+2026-08-27 第一轮：
 
 - `let` / `const`；
 - variable / binding / value；
-- `const` 与对象属性修改；
-- JavaScript 动态类型：值有类型，变量不被固定为某一种类型；
+- JavaScript 动态类型；
 - `number` / `string` / `boolean`；
 - `undefined` / `null`；
 - `typeof`；
-- `typeof null === "object"` 的历史兼容问题；
-- `==` 与 `===`，默认优先严格相等。
+- `typeof null === "object"`；
+- `==` 与 `===`。
 
-当前这些内容刚完成第一轮，不提前标记为 `understood`；后续通过间隔回忆确认。
+2026-08-28 第一轮：
 
-### 下一学习断点
+- 对象 / 数组；
+- `user.name` / `user["name"]` / `user[key]`；
+- 对象 / 数组共享引用直觉；
+- `const` 阻止重新绑定，但不阻止修改对象内部属性。
 
-下一次从：
+2026-08-29 第一轮：
+
+- 函数定义与调用；
+- 形参与实参；
+- `return` 与返回值；
+- 无显式 `return` 时返回 `undefined`；
+- `return` 会立即结束当前函数；
+- 局部变量与外层变量的基础作用域方向。
+
+这些内容仍属于第一轮学习，不提前标记为 `understood`，后续通过间隔回忆确认。
+
+### 当前下一学习断点
+
+下一次从函数基础之后继续，单日只推进一个明确主题。候选顺序：
 
 ```text
-对象 / 数组的基本模型
-→ 属性访问
-→ 对象与引用直觉
-→ 函数
-→ 作用域 / 闭包 / this / prototype
+作用域深化 / 闭包基础
+→ this
+→ prototype
 → DOM / Event
 → Promise / async-await / Event Loop
 → fetch / JSON / API
@@ -77,7 +90,7 @@ Web / Network / Browser 已完成一轮系统学习并经过无提示混合回�
 → Linux / Docker / Deployment / CI
 ```
 
-不重复从 Web / Network 开始，也不提前跳到 React。
+不要一次跨越多个主题，也不要提前跳到 React。
 
 ## 算法主线
 
@@ -85,36 +98,40 @@ Web / Network / Browser 已完成一轮系统学习并经过无提示混合回�
 
 ### 已完成
 
-2026-08-27：LeetCode 49「字母异位词分组」第一轮完成。
+- 2026-08-27：LeetCode 49「字母异位词分组」；
+- 2026-08-28：LeetCode 128「最长连续序列」；
+- 2026-08-29：LeetCode 283「移动零」。
 
-核心：
+### 当前需要稳定的算法 / C++ 点
 
-```text
-每个字符串复制为 key
-→ 对 key 排序
-→ 排序结果作为 unordered_map 的键
-→ key 相同的原字符串进入同一 vector
-→ 收集所有 pair.second 形成最终答案
-```
+- `unordered_map<Key, Value>` 与 `vector<vector<T>>` 的模板结构；
+- `vector` 用 `push_back()`，`unordered_set` 用 `insert()`；
+- `unordered_set` 没有下标访问，范围 for 用 `for (int x : set)`；
+- 局部基本类型变量不会自动初始化为 0；
+- 128：只有连续序列起点才启动内部 `while`，因此平均时间 `O(n)`；
+- 283：`write` 表示下一个非零元素写入位置；时间 `O(n)`，额外空间 `O(1)`；
+- 复杂度分析时，输入本身占用的空间不算算法额外空间。
 
-复杂度：
+### 近期复习节点
 
-- 时间：`O(n * k log k)`；
-- 空间：`O(n * k)`。
+LeetCode 49：
 
-本次暴露的实现点：
+- D+3：2026-08-30；
+- D+7：2026-09-03；
+- D+21：2026-09-17。
 
-- `std::sort` 原地排序，不返回排序结果；
-- `unordered_map<string, vector<string>>` 是中间分组结构，不能直接返回为 `vector<vector<string>>`；
-- 最终通过遍历哈希表收集 `pair.second`；
-- C++ 嵌套 `vector` 类型仍需通过实践继续稳定。
+LeetCode 128：
 
-### LeetCode 49 复习节点
+- D+3：2026-08-31；
+- D+7：2026-09-04；
+- D+21：2026-09-18。
 
-- D+1：2026-08-28，口述思路 / 数据结构 / 复杂度；
-- D+3：2026-08-30，不看答案恢复关键实现；
-- D+7：2026-09-03，重新独立完成或完整推导；
-- D+21：2026-09-17，随机抽查。
+LeetCode 283：
+
+- D+1：2026-08-30；
+- D+3：2026-09-01；
+- D+7：2026-09-05；
+- D+21：2026-09-19。
 
 ## 每日执行规则
 
@@ -130,8 +147,8 @@ Web / Network / Browser 已完成一轮系统学习并经过无提示混合回�
 今日停止线
 ```
 
-每天完成固定任务后立即结束字节准备，不追加第二个知识主题或第二道新算法题。
+每天完成固定任务后立即结束字节准备，不追加第二个知识主题或第二道新算法题。重要知识点也要通过后续间隔回忆复习，不只复习算法。
 
 ## 最近一次会话
 
-[[05-Progress/Sessions/2026-08-27-bytedance-day-1]]
+[[05-Progress/Sessions/2026-08-29-bytedance-day-3]]
