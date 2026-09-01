@@ -123,6 +123,25 @@ rightMax = max(height[right], rightMax);
 - 原型链查找顺序；
 - 实例属性与 `prototype` 共享方法的区别。
 
+## 晚间轻量复习
+
+2026-09-01 已执行轻量回忆，不新增知识或算法题。
+
+脱离笔记应能口述的最小集合：
+
+- `prototype`：属性查找先自身、再沿原型链；自身同名属性遮蔽原型属性；`Object.create(proto)` 建立原型关系；实例数据与 prototype 共享方法分开理解。
+- LeetCode 283：`write` 是下一个非零元素写入位置；时间 `O(n)`、额外空间 `O(1)`。
+- LeetCode 15：排序后固定 `i`，其余区间双指针，根据 sum 正负移动并去重；时间 `O(n^2)`。
+- LeetCode 42：`left/right` 是下标，更新最大高度必须使用 `height[left/right]`；依据较小一侧的 Max 结算当前位置；时间 `O(n)`、额外空间 `O(1)`。
+
+继续保留的易错点：
+
+- 不把 LeetCode 283 的 `write` 口误成 `right`；
+- LeetCode 42 严格区分“下标”和“柱子高度”，不能写成 `max(left, leftMax)`；
+- LeetCode 42 的 D+1 重点仍是解释为什么较小 Max 一侧可以立即结算，而不是只背代码。
+
+今晚到此停止，不推进下一主题。
+
 ## 下一次入口
 
 下一次开始时：
