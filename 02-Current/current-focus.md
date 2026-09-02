@@ -3,7 +3,7 @@ tags:
   - current
   - learning
 status: active
-updated: 2026-09-01
+updated: 2026-09-02
 ---
 
 # 当前学习焦点
@@ -44,6 +44,16 @@ Web / Network / Browser 已完成一轮系统学习并经过无提示混合回�
 - 实例自己的数据属性与 prototype 上的共享方法是两回事；
 - 暂不展开 `new` 的完整内部机制。
 
+2026-09-02：DOM / Event 基础：
+
+- `document` 是 JavaScript 访问当前页面 DOM 的入口；
+- `document.querySelector("#id")` 返回匹配的 DOM 元素对象；
+- `textContent` 可读取 / 修改元素文本；
+- `addEventListener("click", handler)` 注册事件处理函数，事件发生时再执行；
+- `event` 由浏览器在事件发生时提供，`event.target` 表示实际触发事件的元素；
+- 已能在少量提示后独立写出“点击按钮 → 修改文本”的最小交互；
+- 当前易错点是 DOM API 大小写、选择器字符串引号，以及从零恢复固定语法。
+
 这些内容仍处于第一轮 + 间隔复习阶段，不提前整体标记为 `understood`。
 
 ### 当前下一学习断点
@@ -51,8 +61,7 @@ Web / Network / Browser 已完成一轮系统学习并经过无提示混合回�
 下一个单日主题候选顺序：
 
 ```text
-DOM / Event
-→ Promise / async-await / Event Loop
+Promise / async-await / Event Loop
 → fetch / JSON / API
 → TypeScript
 → React
@@ -73,7 +82,8 @@ DOM / Event
 - 2026-08-29：LeetCode 283「移动零」；
 - 2026-08-30：LeetCode 11「盛最多水的容器」；
 - 2026-08-31：LeetCode 15「三数之和」；
-- 2026-09-01：LeetCode 42「接雨水」双指针实现已通过。
+- 2026-09-01：LeetCode 42「接雨水」；
+- 2026-09-02：LeetCode 438「找到字符串中所有字母异位词」滑动窗口实现已完成。
 
 ### 当前需要稳定的算法 / C++ 点
 
@@ -86,7 +96,8 @@ DOM / Event
 - 283：`write` 表示下一个非零元素写入位置；时间 `O(n)`，额外空间 `O(1)`；
 - 11：移动较高边只会缩小宽度而短板不变，因此应移动较短边；
 - 15：排序 + 固定 `i` + 双指针 + 去重；时间 `O(n^2)`；不计输出时双指针本身 `O(1)`，考虑 `std::sort` 常见递归栈时通常 `O(log n)`；
-- 42：`left/right` 是下标，`height[left]/height[right]` 才是高度；每轮依据 `leftMax/rightMax` 较小的一侧结算当前位置，不需要第三个中间指针；时间 `O(n)`、额外空间 `O(1)`。
+- 42：`left/right` 是下标，`height[left]/height[right]` 才是高度；每轮依据 `leftMax/rightMax` 较小的一侧结算当前位置；时间 `O(n)`、额外空间 `O(1)`；
+- 438：固定长度滑动窗口；右字符进入计数 `+1`，窗口过长时左字符计数 `-1` 后 `left++`；两个 26 长度数组相等时记录 `left`；时间 `O(n)`、额外空间 `O(1)`；复杂度易错点是固定 26 项比较为常数，但外层仍然有长度为 `n` 的遍历。
 
 ### 近期复习节点
 
@@ -103,7 +114,6 @@ LeetCode 283：
 - D+21：2026-09-19。
 
 LeetCode 11：
-- D+3：2026-09-02；
 - D+7：2026-09-06；
 - D+21：2026-09-20。
 
@@ -113,10 +123,15 @@ LeetCode 15：
 - D+21：2026-09-21。
 
 LeetCode 42：
-- D+1：2026-09-02；
 - D+3：2026-09-04；
 - D+7：2026-09-08；
 - D+21：2026-09-22。
+
+LeetCode 438：
+- D+1：2026-09-03；
+- D+3：2026-09-05；
+- D+7：2026-09-09；
+- D+21：2026-09-23。
 
 ## 每日执行规则
 
@@ -134,4 +149,4 @@ LeetCode 42：
 
 ## 最近一次会话
 
-[[05-Progress/Sessions/2026-09-01-bytedance-day-6]]
+[[05-Progress/Sessions/2026-09-02-bytedance-day-7]]
