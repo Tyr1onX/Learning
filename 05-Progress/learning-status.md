@@ -3,7 +3,7 @@ tags:
   - progress
   - learning
 status: active
-updated: 2026-08-08
+updated: 2026-09-09
 ---
 
 # Learning Status
@@ -41,19 +41,26 @@ updated: 2026-08-08
 | Performance | Reflow / Repaint | learning | 现象基本理解，正式术语仍需稳定 | JS / DOM 后再抽问 |
 | Performance | Forced Synchronous Layout | learning | 能解释“写布局后立刻读真实几何值必须先算 Layout” | 结合实际 DOM API 复习 |
 | Performance | Layout Thrashing | learning | 已理解频繁读写导致反复 Layout，但术语不易主动想起 | 间隔复习术语 + 代码模式 |
-| JavaScript | const / let / value / binding | learning | 已开始从 `const title = ...` 建立 JS 语言基础 | **当前继续** |
-| JavaScript / DOM | document / querySelector / Element | learning | 已理解大意；需巩固 Document≠具体 Element、selector 字符串由方法解释 | **当前继续** |
-| JavaScript | Scope / Closure / Prototype / this | not-started | 尚未系统补 | JS 基础后 |
-| JavaScript | Promise / Event Loop / async-await | not-started | 尚未系统补 | DOM / Event 后 |
+| JavaScript | const / let / value / binding | learning | 已完成第一轮，变量 / 基础类型 D+7 已补复习通过 | D+21：2026-09-17 |
+| JavaScript | Object / Array / reference | learning | 已完成第一轮，对象 / 数组 D+7 于 2026-09-09 补复习通过 | D+21：2026-09-18 |
+| JavaScript | Function / return / local variables | learning | 已完成第一轮，D+7 逾期待补 | 尽快补复习 |
+| JavaScript | Scope / Closure | learning | 已完成第一轮，D+7 待补 | 尽快补复习 |
+| JavaScript | this | learning | 已完成第一轮，D+7 待补 | 尽快补复习 |
+| JavaScript | Prototype | learning | 已完成第一轮，D+7 待补 | 尽快补复习 |
+| JavaScript / DOM | document / querySelector / Element / Event | learning | DOM / Event 已完成第一轮；需巩固 API 大小写、选择器字符串和 `event.target` | D+7 待补 |
+| JavaScript | Promise / Event Loop / async-await | learning | 已完成第一轮；需巩固 `await` 前同步执行、`await` 后微任务 | D+1/D+3 待补，D+7：2026-09-13 |
+| Web / JavaScript | fetch / JSON / API | learning | 2026-09-09 完成第一轮；`res` vs `data`、`res.ok`、JSON 结构、路由匹配需复习 | D+1：2026-09-10 |
 | CSS | Box / Flex / Grid / Position | not-started | 有项目使用经验但未系统审计 | Phase B |
-| Framework | Vue / React concepts | not-started | 框架概念基础薄弱 | fetch/API/完整交互后逐步进入 |
-| Backend | Server / Route / Request / Response | not-started | 计划由 `fetch()` 自然切入 | JS 异步 / API 后 |
+| Framework | Vue / React concepts | not-started | 框架概念基础薄弱 | TypeScript 后进入 |
+| Backend | Server / Route / Request / Response | not-started | 已由 `fetch()` 建立入口，尚未正式系统学后端 | API 后正式进入 |
 | Backend | REST / service layering / validation | not-started | 有零散概念 | 后端基础之后 |
 | Database | SQL / index / transaction | not-started | 有基础使用经验但需系统补 | 后端 API 后 |
 | OS/Linux | process / thread / memory / IO | not-started | 有零散接触 | Phase D/F |
-| Algorithm | Complexity | review-needed | 知道概念但需系统化 | Phase E 前置 |
+| Algorithm | Complexity | review-needed | 能说常见复杂度，但理由表达需更精确，如 239 要说“每个下标最多入队/出队一次” | 持续穿插 |
+| Algorithm | Hash / Prefix Sum | learning | 560 已完成第一轮；D+3 补问后恢复，但循环顺序初次记反 | 晚间 / D+7 复查 |
+| Algorithm | Sliding Window / Monotonic Queue | learning | 239 已完成第一轮；deque 存下标、窗口边界、过期判断和入队下标需巩固 | D+1：2026-09-10 |
 | Algorithm | DFS / BFS | review-needed | 见过常见写法，需真正理解 | Phase E |
-| Algorithm | DP / LCS / Diff | not-started | 真实面试暴露为明显短板 | **重点专项** |
+| Algorithm | DP / LCS / Diff | not-started | 真实面试暴露为明显短板 | 重点专项 |
 | Engineering | Git / PR / CI / testing | review-needed | 项目经验较多，理论表达需整理 | Phase F |
 | Engineering | Maintainability / architecture | review-needed | 有实际迭代经验，需形成判断框架 | Phase F |
 | AI Coding | Requirement / review / validation | understood | 当前相对优势 | 与每个基础模块融合 |
@@ -74,12 +81,8 @@ interview-ready
 
 ## 最近一次更新
 
-2026-08-08：Browser Rendering 完成第一轮学习并通过连续口头推理：HTML / DOM / CSSOM、`display:none` / `visibility:hidden` / `opacity:0`、`transform` / `opacity` / `transition`、普通 script、`async` / `defer`、`DOMContentLoaded` / `load`、CSS 对 Parsing / Rendering 的不同影响、Reflow / Repaint、Forced Synchronous Layout、Layout Thrashing。浏览器主干升级为 `understood`，但性能专有术语仍保留为 `learning`。
+2026-09-09：完成 `fetch / JSON / API` 第一轮与 LeetCode 239「滑动窗口最大值」。
 
-当前已转入 JavaScript + DOM 最低必要基础，从：
-
-```js
-const title = document.querySelector(".title");
-```
-
-继续学习 `const` / `let`、值与类型、对象、函数、`document`、DOM Element、方法与 CSS Selector；之后再进入 DOM Event、Promise / async-await / Event Loop，并由 `fetch()` 正式引入后端。
+- `fetch / JSON / API`：能理解浏览器 JS 通过 `fetch` 向后端 API 请求数据，后端匹配路由并返回 JSON；当前需继续巩固 `Response` / `res.json()`、`res.ok`、JSON 对象 / 数组结构和路由匹配术语。
+- 239：能理解单调队列保留未来可能成为最大值的候选；当前需继续巩固 `deque` 存下标、窗口边界 `[i-k+1, i]`、过期条件、队尾比较、入队下标和 `O(n)` 复杂度理由。
+- 旧复习：对象 / 数组、438、15 通过；42 补问后通过；560 补问后恢复，但循环顺序需要晚间再抽。
