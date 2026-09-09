@@ -50,6 +50,9 @@ updated: 2026-09-09
 | JavaScript / DOM | document / querySelector / Element / Event | learning | DOM / Event 已完成第一轮；需巩固 API 大小写、选择器字符串和 `event.target` | D+7 待补 |
 | JavaScript | Promise / Event Loop / async-await | learning | 已完成第一轮；需巩固 `await` 前同步执行、`await` 后微任务 | D+1/D+3 待补，D+7：2026-09-13 |
 | Web / JavaScript | fetch / JSON / API | learning | 2026-09-09 完成第一轮；`res` vs `data`、`res.ok`、JSON 结构、路由匹配需复习 | D+1：2026-09-10 |
+| Python | 基础语法 / 控制流 / 列表 / 函数 / 字典 | learning | 已完成第一轮独立练习；循环边界、输入转换、下标与字典键值需巩固 | D+1：2026-09-10 |
+| Python | 集合 set | learning | 已看过示例，尚未独立完成去重题 | 2026-09-10 复习时先练 |
+| Python | 类型注解 / 模块 / 异常处理 | not-started | 仅做入门介绍，尚未独立练习 | 基础复习后 |
 | CSS | Box / Flex / Grid / Position | not-started | 有项目使用经验但未系统审计 | Phase B |
 | Framework | Vue / React concepts | not-started | 框架概念基础薄弱 | TypeScript 后进入 |
 | Backend | Server / Route / Request / Response | not-started | 已由 `fetch()` 建立入口，尚未正式系统学后端 | API 后正式进入 |
@@ -86,3 +89,5 @@ interview-ready
 - `fetch / JSON / API`：能理解浏览器 JS 通过 `fetch` 向后端 API 请求数据，后端匹配路由并返回 JSON；当前需继续巩固 `Response` / `res.json()`、`res.ok`、JSON 对象 / 数组结构和路由匹配术语。
 - 239：能理解单调队列保留未来可能成为最大值的候选；当前需继续巩固 `deque` 存下标、窗口边界 `[i-k+1, i]`、过期条件、队尾比较、入队下标和 `O(n)` 复杂度理由。
 - 旧复习：对象 / 数组、438、15 通过；42 补问后通过；560 补问后恢复，但循环顺序需要晚间再抽。
+
+2026-09-09：Python 基础专项完成第一轮，记录于 [[05-Progress/Sessions/2026-09-09-python-basics]]。集合去重尚未独立完成，2026-09-10 先进行无提示复习，状态保持 `learning`。

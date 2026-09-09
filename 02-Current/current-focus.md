@@ -14,6 +14,16 @@ updated: 2026-09-09
 
 Learning 仓库是跨窗口唯一进度来源；所有掌握状态、复习节点和下一断点都以仓库实际记录为准。
 
+## Python 基础专项（2026-09-09）
+
+本次额外进行 Python 基础语法学习，已完成第一轮变量、输入转换、条件、for/range、while、列表、enumerate、函数、字典计数与遍历；集合只看过示例，去重题尚未提交。状态为 `learning`，不因当日答对就升级。
+
+- 知识笔记：[[03-Knowledge/Python/python-basics]]
+- 会话记录：[[05-Progress/Sessions/2026-09-09-python-basics]]
+- 下一断点：2026-09-10 先无提示复习 Python，优先完成集合去重，再检查循环边界、列表最大值及下标、字典计数。
+- 已设置 2026-09-10 21:05（Asia/Shanghai）的 Python 复习提醒。
+- Python 为本次专项，不覆盖下方原有全栈主线与算法复习队列。
+
 ## 已完成主干
 
 Web / Network / Browser 已完成一轮系统学习并经过无提示混合回忆，主干维持 `understood`。详见 `03-Knowledge/Web/`。
@@ -209,3 +219,4 @@ LeetCode 239：
 ## 最近一次会话
 
 [[05-Progress/Sessions/2026-09-09-bytedance-day-9]]
+[[05-Progress/Sessions/2026-09-09-python-basics]]
