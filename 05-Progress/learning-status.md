@@ -3,7 +3,7 @@ tags:
   - progress
   - learning
 status: active
-updated: 2026-09-09
+updated: 2026-09-17
 ---
 
 # Learning Status
@@ -23,45 +23,47 @@ updated: 2026-09-09
 | Auth | JWT / Access / Refresh Token | understood | 已纠正 JWT≠加密 | 间隔复习 Token 被盗场景 |
 | Security | XSS / CSRF | understood | 能解释攻击目标差异 | 后续补 CSP / CSRF token |
 | Web | Same-Origin / SameSite | understood | 能区分 Origin 与 Site | 与 Cookie/CORS 混合问 |
-| Web | CORS / Preflight | understood | 能解释 200 仍 CORS error、JSON preflight | 需间隔复习 safelist |
-| Performance | Strong / Conditional Cache | understood | max-age、ETag、304 主干清楚 | 补 Vary 等更深内容前先复习 |
+| Web | CORS / Preflight | understood | 能解释 200 仍 CORS error、JSON preflight | 间隔复习 |
+| Performance | Strong / Conditional Cache | understood | max-age、ETag、304 主干清楚 | 补 Vary 前先复习 |
 | Performance | no-cache / no-store | understood | 已纠正反直觉含义 | 高频抽问 |
-| Performance | Content Hash | understood | 能解释为什么新 URL 绕过旧缓存 | 与构建工具连接 |
-| Performance | CDN / TTL / Hit / Miss / Origin | understood | 主干能自己推导 | 后续补 CDN 与部署实践 |
-| HTTP | HTTP/1.1 Keep-Alive | understood | 能解释连接复用目的 | 与连接池/浏览器并发联系 |
+| Performance | Content Hash | understood | 能解释新 URL 绕过旧缓存 | 与构建工具连接 |
+| Performance | CDN / TTL / Hit / Miss / Origin | understood | 主干能自己推导 | 部署实践时再连 |
+| HTTP | HTTP/1.1 Keep-Alive | understood | 能解释连接复用目的 | 与连接池联系 |
 | HTTP | HTTP/2 Multiplexing / HOL | understood | 已理解 TCP 层队头阻塞 | 间隔复述 |
 | HTTP | HTTP/3 / QUIC / UDP | understood | 能解释 QUIC 提供可靠性与 TLS 1.3 | 后续补 RTT / 0-RTT |
 | HTTP | QUIC Connection Migration | understood | 能用四元组 vs Connection ID 解释 | 后续复习 |
-| Browser | DOM / CSSOM / Render pipeline | understood | 已能解释 HTML≠DOM、Layout→Paint→Composite 主干 | 隔一段时间无提示复述 |
-| Browser | display / visibility / opacity | understood | 能区分是否占布局空间、是否默认可点击 | 与动画 / accessibility 再联系 |
-| CSS | transform / opacity / transition | understood | 已理解变换、不透明度、连续过渡及为何常用于动画 | 后续结合实际动画代码 |
-| Browser | script / defer / async | understood | 能根据下载完成顺序判断 async；能说明 defer 保持声明顺序 | 间隔混合题 |
-| Browser | DOMContentLoaded / load | understood | 能判断 DOM 完成但大图片未完成时两事件差异 | 与 defer / module 再联系 |
-| Browser | CSS render blocking / JS indirect wait | understood | 能解释 DOM 可继续构建、关键渲染需等样式，以及 HTML→JS→CSS 等待链 | 后续结合 Critical Rendering Path |
-| Performance | Reflow / Repaint | learning | 现象基本理解，正式术语仍需稳定 | JS / DOM 后再抽问 |
-| Performance | Forced Synchronous Layout | learning | 能解释“写布局后立刻读真实几何值必须先算 Layout” | 结合实际 DOM API 复习 |
-| Performance | Layout Thrashing | learning | 已理解频繁读写导致反复 Layout，但术语不易主动想起 | 间隔复习术语 + 代码模式 |
-| JavaScript | const / let / value / binding | learning | 已完成第一轮，变量 / 基础类型 D+7 已补复习通过 | D+21：2026-09-17 |
-| JavaScript | Object / Array / reference | learning | 已完成第一轮，对象 / 数组 D+7 于 2026-09-09 补复习通过 | D+21：2026-09-18 |
-| JavaScript | Function / return / local variables | learning | 已完成第一轮，D+7 逾期待补 | 尽快补复习 |
-| JavaScript | Scope / Closure | learning | 已完成第一轮，D+7 待补 | 尽快补复习 |
-| JavaScript | this | learning | 已完成第一轮，D+7 待补 | 尽快补复习 |
-| JavaScript | Prototype | learning | 已完成第一轮，D+7 待补 | 尽快补复习 |
-| JavaScript / DOM | document / querySelector / Element / Event | learning | DOM / Event 已完成第一轮；需巩固 API 大小写、选择器字符串和 `event.target` | D+7 待补 |
-| JavaScript | Promise / Event Loop / async-await | learning | 已完成第一轮；需巩固 `await` 前同步执行、`await` 后微任务 | D+1/D+3 待补，D+7：2026-09-13 |
-| Web / JavaScript | fetch / JSON / API | learning | 2026-09-09 完成第一轮；`res` vs `data`、`res.ok`、JSON 结构、路由匹配需复习 | D+1：2026-09-10 |
-| Python | 基础语法 / 控制流 / 列表 / 函数 / 字典 | learning | 已完成第一轮独立练习；循环边界、输入转换、下标与字典键值需巩固 | D+1：2026-09-10 |
-| Python | 集合 set | learning | 已看过示例，尚未独立完成去重题 | 2026-09-10 复习时先练 |
-| Python | 类型注解 / 模块 / 异常处理 | not-started | 仅做入门介绍，尚未独立练习 | 基础复习后 |
-| CSS | Box / Flex / Grid / Position | not-started | 有项目使用经验但未系统审计 | Phase B |
-| Framework | Vue / React concepts | not-started | 框架概念基础薄弱 | TypeScript 后进入 |
-| Backend | Server / Route / Request / Response | not-started | 已由 `fetch()` 建立入口，尚未正式系统学后端 | API 后正式进入 |
+| Browser | DOM / CSSOM / Render pipeline | understood | 主干能独立解释 | 混合回忆 |
+| Browser | display / visibility / opacity | understood | 能区分布局与可见性 | 后续混合问 |
+| CSS | transform / opacity / transition | understood | 理解常用于动画的原因 | 结合实际代码 |
+| Browser | script / defer / async | understood | 能判断下载 / 执行顺序 | 间隔混合题 |
+| Browser | DOMContentLoaded / load | understood | 能区分两事件 | 与 defer/module 联系 |
+| Browser | CSS render blocking / JS indirect wait | understood | 能解释 Parsing / Rendering 区别 | 后续关键渲染路径 |
+| Performance | Reflow / Repaint | learning | 现象理解，术语仍需稳定 | 间隔复习 |
+| Performance | Forced Synchronous Layout | learning | 能解释写后立刻读几何值 | DOM API 中复习 |
+| Performance | Layout Thrashing | learning | 现象理解，术语不稳定 | 间隔复习 |
+| JavaScript | const / let / value / binding | learning | 第一轮完成；D+7 已通过 | D+21 2026-09-17 待补 |
+| JavaScript | Object / Array / reference | learning | D+7 已通过 | D+21 2026-09-18 |
+| JavaScript | Function / return / local variables | learning | 2026-09-17 逾期补复习；`NaN` / 缺失参数经补充后理解 | D+21 2026-09-19 |
+| JavaScript | Scope / Closure | learning | 第一轮完成，D+7 逾期 | 尽快补复习 |
+| JavaScript | this | learning | 第一轮完成，D+7 逾期 | 尽快补复习 |
+| JavaScript | Prototype | learning | 第一轮完成，D+7 逾期 | 尽快补复习 |
+| JavaScript / DOM | document / querySelector / Element / Event | learning | 第一轮完成，固定语法仍需稳定 | D+7 逾期 |
+| JavaScript | Promise / Event Loop / async-await | learning | 第一轮完成；`await` 前后顺序需稳定 | D+21 2026-09-27 |
+| Web / JavaScript | fetch / JSON / API | learning | 第一轮完成；Response / JSON / 路由术语需复习 | D+21 2026-09-30 |
+| TypeScript | 基础类型 / 对象 / 联合类型 / narrowing / 数组 | learning | 2026-09-17 第一轮完成；可选字段与 `User[]` 初次有混淆 | D+1 2026-09-18 |
+| Python | 基础语法 / 控制流 / 列表 / 函数 / 字典 | learning | 2026-09-09 第一轮，之后未记录复习完成 | 待恢复 |
+| Python | 集合 set | learning | 已看示例，尚未记录独立去重题完成 | 待恢复 |
+| Python | 类型注解 / 模块 / 异常处理 | not-started | 仅入门介绍 | 基础复习后 |
+| CSS | Box / Flex / Grid / Position | not-started | 有项目经验但未系统审计 | Phase B |
+| Framework | React concepts | not-started | TypeScript 第一轮已完成，下一主线 | **当前下一主题** |
+| Backend | Server / Route / Request / Response | not-started | 已由 fetch/API 建立入口 | React 后 / API 链路继续 |
 | Backend | REST / service layering / validation | not-started | 有零散概念 | 后端基础之后 |
 | Database | SQL / index / transaction | not-started | 有基础使用经验但需系统补 | 后端 API 后 |
 | OS/Linux | process / thread / memory / IO | not-started | 有零散接触 | Phase D/F |
-| Algorithm | Complexity | review-needed | 能说常见复杂度，但理由表达需更精确，如 239 要说“每个下标最多入队/出队一次” | 持续穿插 |
-| Algorithm | Hash / Prefix Sum | learning | 560 已完成第一轮；D+3 补问后恢复，但循环顺序初次记反 | 晚间 / D+7 复查 |
-| Algorithm | Sliding Window / Monotonic Queue | learning | 239 已完成第一轮；deque 存下标、窗口边界、过期判断和入队下标需巩固 | D+1：2026-09-10 |
+| Algorithm | Complexity | review-needed | 能判断常见复杂度，理由表达仍需精确 | 持续穿插 |
+| Algorithm | Hash / Prefix Sum | learning | 560 于 2026-09-17 逾期复习恢复；`count[0]` 语义仍需稳定 | D+21 2026-09-27 |
+| Algorithm | Sliding Window / Monotonic Queue | learning | 239 于 2026-09-17 恢复；队头/队尾职责经手推后理顺 | D+21 2026-09-30 |
+| Algorithm | Sliding Window / Minimum Window | learning | 76 第一轮完成；已能写出核心 need/window/valid 更新 | D+1 2026-09-18 |
 | Algorithm | DFS / BFS | review-needed | 见过常见写法，需真正理解 | Phase E |
 | Algorithm | DP / LCS / Diff | not-started | 真实面试暴露为明显短板 | 重点专项 |
 | Engineering | Git / PR / CI / testing | review-needed | 项目经验较多，理论表达需整理 | Phase F |
@@ -80,14 +82,13 @@ understood
 interview-ready
 ```
 
-如果复习时明显遗忘，可以从 `understood` 回退为 `review-needed`，这不是失败，而是让记录反映真实状态。
+复习时明显遗忘可回退状态；状态只反映当前真实能力。
 
 ## 最近一次更新
 
-2026-09-09：完成 `fetch / JSON / API` 第一轮与 LeetCode 239「滑动窗口最大值」。
+2026-09-17：完成 TypeScript 基础第一轮与 LeetCode 76「最小覆盖子串」。
 
-- `fetch / JSON / API`：能理解浏览器 JS 通过 `fetch` 向后端 API 请求数据，后端匹配路由并返回 JSON；当前需继续巩固 `Response` / `res.json()`、`res.ok`、JSON 对象 / 数组结构和路由匹配术语。
-- 239：能理解单调队列保留未来可能成为最大值的候选；当前需继续巩固 `deque` 存下标、窗口边界 `[i-k+1, i]`、过期条件、队尾比较、入队下标和 `O(n)` 复杂度理由。
-- 旧复习：对象 / 数组、438、15 通过；42 补问后通过；560 补问后恢复，但循环顺序需要晚间再抽。
-
-2026-09-09：Python 基础专项完成第一轮，记录于 [[05-Progress/Sessions/2026-09-09-python-basics]]。集合去重尚未独立完成，2026-09-10 先进行无提示复习，状态保持 `learning`。
+- TypeScript：理解静态类型检查、类型推断、对象类型、可选字段、`type`、联合类型、narrowing、`T[]`；可选字段和数组元素类型初次有混淆，状态保持 `learning`。
+- 76：从朴素枚举进入滑动窗口，理解 `need / window / valid`、右扩左缩、临界 `valid++/--`、左闭右开窗口，并在引导后独立写出核心循环；状态保持 `learning`。
+- 49 D+21 通过；560 逾期复习恢复；239 D+7 逾期一天补复习恢复。
+- 函数定义 / 调用逾期补复习；`NaN` 和缺失参数行为需继续间隔抽查。
